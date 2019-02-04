@@ -1,2 +1,4 @@
-﻿  C++ ConsoleP.cpp
-  C++ ConsoleP.vcxproj -> C:\Users\Stefan\source\repos\C++ ConsoleP\Debug\C++ ConsoleP.exe
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (C++ ConsoleP.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  pch.cpp
+  C++ ConsoleP.cpp
+  C++ ConsoleP.vcxproj -> C:\Users\Stefan\source\repos\CPP ConsoleP\Debug\HelloWorld.exe

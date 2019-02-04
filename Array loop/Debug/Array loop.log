@@ -1,0 +1,3 @@
+﻿  Array loop.cpp
+c:\users\stefan\source\repos\cpp consolep\array loop\array loop.cpp(11): warning C4305: 'initializing': truncation from 'double' to 'float'
+  Array loop.vcxproj -> C:\Users\Stefan\source\repos\CPP ConsoleP\Debug\Array loop.exe
