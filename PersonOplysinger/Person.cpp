@@ -3,13 +3,6 @@
 #include <iostream>
 using namespace std;
 
-int age;
-string name;
-string lastName;
-int cpr;
-bool married;
-string gender;
-
 Person::Person(int age, string name, string lastName, int cpr, bool married, string gender)
 {
 	this->age = age;

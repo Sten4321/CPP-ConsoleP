@@ -13,33 +13,13 @@
 #include "Lake.h"
 using namespace std;
 
-bool gamePlaying = true;
-int cX = 0;//curser pos
-int cY = 0;
-int x, y;
-
-char grid[10][10] = {
-	'0','1','2','3','4','5','6','7','8','0',
-	'1',' ',' ',' ',' ',' ',' ',' ',' ','1',
-	'2',' ',' ',' ',' ',' ',' ',' ',' ','2',
-	'3',' ',' ',' ',' ',' ',' ',' ',' ','3',
-	'4',' ',' ',' ',' ',' ',' ',' ',' ','4',
-	'5',' ',' ',' ',' ',' ',' ',' ',' ','5',
-	'6',' ',' ',' ',' ',' ',' ',' ',' ','6',
-	'7',' ',' ',' ',' ',' ',' ',' ',' ','7',
-	'8',' ',' ',' ',' ',' ',' ',' ',' ','8',
-	'0','1','2','3','4','5','6','7','8','9',
-};
-
-
-
 void Lake::UpdateGrid()
 {
-	for (size_t y = 1; y < 10; y++)
+	for (int y = 0; y < hight; y++)
 	{
-		for (size_t x = 1; x < 10; x++)
+		for (int x = 0; x < width; x++)
 		{
-			grid[y][x];
+			grid[y][x];//TODO: add functions here
 		}
 	}
 }
@@ -53,19 +33,19 @@ void Lake::MoveCursor(int x, int y)
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
 
-void Lake::Drawer(int y, int x)
+void Lake::Drawer()
 {
-	for (size_t y = 0; y < 10; y++)
+	for (int y = 0; y < hight; y++)
 	{
-		for (size_t x = 0; x < 10; x++)
+		for (int x = 0; x < width; x++)
 		{
-			if (y == cY && x == cX)
+			if (y == cY && x == cX)//TODO: change to draw animals instead
 			{
-				cout << " # ";//draw curser
+				cout << "# ";//draw curser
 			}
 			else
 			{
-				cout << (char)grid[y][x] << " ";//draw grid
+				cout << grid[x][y] << " ";//draw grid
 			}
 		}
 		cout << endl;
@@ -75,26 +55,48 @@ void Lake::Drawer(int y, int x)
 
 void Lake::Controls()
 {
-	cout << "\n\n\n";
-
 	cout << "Player 1!: Write where you want to place your X";
+	cout << endl;
 	cin >> x;
 	cin >> y;
-	Drawer(y, x);
+	x--;
+	y--;
+#pragma region hide if
+	if (x > width)
+	{
+		x = 9;
+	}
+	else if (x < 0)
+	{
+		x = 0;
+	}
+	if (y > hight)
+	{
+		y = 9;
+	}
+	else if (y < 0)
+	{
+		y = 0;
+	}
+#pragma endregion
+	Drawer();
 	cin;
 	//Får tråden til at sove!
 	Sleep(17);
-
 }
 
-void Lake::beginGame()
+void Lake::beginGame(int animals)
 {
+	char *pAnimalArray = new char[animals];
+	MoveCursor(0, 0);
 	UpdateGrid();
-	Drawer(0, 0);
+	Drawer();
 	while (gamePlaying = true)
 	{
 		Controls();
 	}
+	delete[] pAnimalArray;
+	pAnimalArray = nullptr;
 }
 
 Lake::Lake()
